@@ -1,0 +1,95 @@
+[2026-04-21T03:11:23.906+0000] {processor.py:186} INFO - Started process (PID=172) to work on /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:11:23.907+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/databricks_dag.py for tasks to queue
+[2026-04-21T03:11:23.910+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:11:23.909+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:11:23.944+0000] {processor.py:925} INFO - DAG(s) 'trigger_databricks_job' retrieved from /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:11:24.034+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:11:24.033+0000] {override.py:1858} INFO - Created Permission View: can edit on DAG:trigger_databricks_job
+[2026-04-21T03:11:24.045+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:11:24.045+0000] {override.py:1858} INFO - Created Permission View: can delete on DAG:trigger_databricks_job
+[2026-04-21T03:11:24.061+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:11:24.061+0000] {override.py:1858} INFO - Created Permission View: can read on DAG:trigger_databricks_job
+[2026-04-21T03:11:24.062+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:11:24.062+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-21T03:11:24.071+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:11:24.071+0000] {dag.py:3234} INFO - Creating ORM DAG for trigger_databricks_job
+[2026-04-21T03:11:24.073+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:11:24.073+0000] {dag.py:4138} INFO - Setting next_dagrun for trigger_databricks_job to None, run_after=None
+[2026-04-21T03:11:24.092+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/databricks_dag.py took 0.192 seconds
+[2026-04-21T03:11:54.453+0000] {processor.py:186} INFO - Started process (PID=177) to work on /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:11:54.455+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/databricks_dag.py for tasks to queue
+[2026-04-21T03:11:54.460+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:11:54.460+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:11:54.528+0000] {processor.py:925} INFO - DAG(s) 'trigger_databricks_job' retrieved from /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:11:54.565+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:11:54.565+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-21T03:11:54.579+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:11:54.579+0000] {dag.py:4138} INFO - Setting next_dagrun for trigger_databricks_job to None, run_after=None
+[2026-04-21T03:11:54.609+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/databricks_dag.py took 0.163 seconds
+[2026-04-21T03:12:25.056+0000] {processor.py:186} INFO - Started process (PID=182) to work on /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:12:25.058+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/databricks_dag.py for tasks to queue
+[2026-04-21T03:12:25.062+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:12:25.062+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:12:25.093+0000] {processor.py:925} INFO - DAG(s) 'trigger_databricks_job' retrieved from /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:12:25.124+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:12:25.124+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-21T03:12:25.138+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:12:25.138+0000] {dag.py:4138} INFO - Setting next_dagrun for trigger_databricks_job to None, run_after=None
+[2026-04-21T03:12:25.167+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/databricks_dag.py took 0.116 seconds
+[2026-04-21T03:12:55.690+0000] {processor.py:186} INFO - Started process (PID=187) to work on /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:12:55.692+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/databricks_dag.py for tasks to queue
+[2026-04-21T03:12:55.704+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:12:55.704+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:12:55.763+0000] {processor.py:925} INFO - DAG(s) 'trigger_databricks_job' retrieved from /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:12:55.820+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:12:55.820+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-21T03:12:55.835+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:12:55.835+0000] {dag.py:4138} INFO - Setting next_dagrun for trigger_databricks_job to None, run_after=None
+[2026-04-21T03:12:55.856+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/databricks_dag.py took 0.176 seconds
+[2026-04-21T03:13:26.350+0000] {processor.py:186} INFO - Started process (PID=192) to work on /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:13:26.351+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/databricks_dag.py for tasks to queue
+[2026-04-21T03:13:26.354+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:13:26.353+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:13:26.381+0000] {processor.py:925} INFO - DAG(s) 'trigger_databricks_job' retrieved from /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:13:26.415+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:13:26.415+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-21T03:13:26.434+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:13:26.433+0000] {dag.py:4138} INFO - Setting next_dagrun for trigger_databricks_job to None, run_after=None
+[2026-04-21T03:13:26.454+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/databricks_dag.py took 0.112 seconds
+[2026-04-21T03:13:56.817+0000] {processor.py:186} INFO - Started process (PID=197) to work on /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:13:56.819+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/databricks_dag.py for tasks to queue
+[2026-04-21T03:13:56.821+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:13:56.821+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:13:56.844+0000] {processor.py:925} INFO - DAG(s) 'trigger_databricks_job' retrieved from /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:13:56.866+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:13:56.866+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-21T03:13:56.878+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:13:56.878+0000] {dag.py:4138} INFO - Setting next_dagrun for trigger_databricks_job to None, run_after=None
+[2026-04-21T03:13:56.905+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/databricks_dag.py took 0.093 seconds
+[2026-04-21T03:14:27.336+0000] {processor.py:186} INFO - Started process (PID=202) to work on /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:14:27.339+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/databricks_dag.py for tasks to queue
+[2026-04-21T03:14:27.343+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:14:27.343+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:14:27.414+0000] {processor.py:925} INFO - DAG(s) 'trigger_databricks_job' retrieved from /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:14:27.454+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:14:27.454+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-21T03:14:27.468+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:14:27.468+0000] {dag.py:4138} INFO - Setting next_dagrun for trigger_databricks_job to None, run_after=None
+[2026-04-21T03:14:27.506+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/databricks_dag.py took 0.176 seconds
+[2026-04-21T03:14:57.854+0000] {processor.py:186} INFO - Started process (PID=207) to work on /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:14:57.857+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/databricks_dag.py for tasks to queue
+[2026-04-21T03:14:57.861+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:14:57.861+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:14:57.918+0000] {processor.py:925} INFO - DAG(s) 'trigger_databricks_job' retrieved from /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:14:57.956+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:14:57.956+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-21T03:14:57.977+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:14:57.977+0000] {dag.py:4138} INFO - Setting next_dagrun for trigger_databricks_job to None, run_after=None
+[2026-04-21T03:14:58.013+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/databricks_dag.py took 0.167 seconds
+[2026-04-21T03:15:28.495+0000] {processor.py:186} INFO - Started process (PID=212) to work on /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:15:28.496+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/databricks_dag.py for tasks to queue
+[2026-04-21T03:15:28.500+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:15:28.500+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:15:28.532+0000] {processor.py:925} INFO - DAG(s) 'trigger_databricks_job' retrieved from /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:15:28.554+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:15:28.553+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-21T03:15:28.566+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:15:28.566+0000] {dag.py:4138} INFO - Setting next_dagrun for trigger_databricks_job to None, run_after=None
+[2026-04-21T03:15:28.597+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/databricks_dag.py took 0.109 seconds
+[2026-04-21T03:15:59.032+0000] {processor.py:186} INFO - Started process (PID=220) to work on /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:15:59.034+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/databricks_dag.py for tasks to queue
+[2026-04-21T03:15:59.037+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:15:59.036+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:15:59.090+0000] {processor.py:925} INFO - DAG(s) 'trigger_databricks_job' retrieved from /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:15:59.129+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:15:59.129+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-21T03:15:59.146+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:15:59.145+0000] {dag.py:4138} INFO - Setting next_dagrun for trigger_databricks_job to None, run_after=None
+[2026-04-21T03:15:59.182+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/databricks_dag.py took 0.155 seconds
+[2026-04-21T03:16:29.847+0000] {processor.py:186} INFO - Started process (PID=225) to work on /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:16:29.849+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/databricks_dag.py for tasks to queue
+[2026-04-21T03:16:29.853+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:16:29.852+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:16:29.937+0000] {processor.py:925} INFO - DAG(s) 'trigger_databricks_job' retrieved from /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:16:29.967+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:16:29.966+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-21T03:16:29.993+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:16:29.992+0000] {dag.py:4138} INFO - Setting next_dagrun for trigger_databricks_job to None, run_after=None
+[2026-04-21T03:16:30.037+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/databricks_dag.py took 0.195 seconds
+[2026-04-21T03:17:00.372+0000] {processor.py:186} INFO - Started process (PID=230) to work on /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:17:00.374+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/databricks_dag.py for tasks to queue
+[2026-04-21T03:17:00.378+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:17:00.377+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:17:00.457+0000] {processor.py:925} INFO - DAG(s) 'trigger_databricks_job' retrieved from /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:17:00.497+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:17:00.497+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-21T03:17:00.518+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:17:00.518+0000] {dag.py:4138} INFO - Setting next_dagrun for trigger_databricks_job to None, run_after=None
+[2026-04-21T03:17:00.569+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/databricks_dag.py took 0.202 seconds
+[2026-04-21T03:17:30.888+0000] {processor.py:186} INFO - Started process (PID=235) to work on /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:17:30.891+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/databricks_dag.py for tasks to queue
+[2026-04-21T03:17:30.895+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:17:30.894+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:17:30.947+0000] {processor.py:925} INFO - DAG(s) 'trigger_databricks_job' retrieved from /opt/airflow/dags/databricks_dag.py
+[2026-04-21T03:17:30.994+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:17:30.994+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-21T03:17:31.007+0000] {logging_mixin.py:190} INFO - [2026-04-21T03:17:31.006+0000] {dag.py:4138} INFO - Setting next_dagrun for trigger_databricks_job to None, run_after=None
+[2026-04-21T03:17:31.038+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/databricks_dag.py took 0.159 seconds
