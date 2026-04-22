@@ -1,7 +1,7 @@
 import streamlit as st
 
-st.title("Databricks Streamlit App")
-st.write("Welcome to your simple Databricks Streamlit app!")
+metrics_page = st.Page("pages/metrics.py", title="Metrics")
+chat_page = st.Page("pages/chat.py", title="Chat")
 
-data = {"Name": ["Alice", "Bob", "Charlie"], "Score": [85, 92, 78]}
-st.table(data)
+pg = st.navigation([metrics_page, chat_page])
+pg.run()
