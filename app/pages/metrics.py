@@ -130,7 +130,7 @@ with col1:
     )
     fig_status.update_traces(texttemplate='$%{text:,.0f}', textposition='outside')
     fig_status.update_layout(showlegend=False, xaxis_title="", yaxis_title="Revenue ($)")
-    st.plotly_chart(fig_status, use_container_width=True)
+    st.plotly_chart(fig_status, width='stretch')
 
 with col2:
     st.subheader("Transaction Mix")
@@ -146,7 +146,7 @@ with col2:
             'cancelled': '#6c757d'
         }
     )
-    st.plotly_chart(fig_pie, use_container_width=True)
+    st.plotly_chart(fig_pie, width='stretch')
 
 # Revenue trend over time
 with st.spinner("Loading revenue trend..."):
@@ -179,7 +179,7 @@ with st.spinner("Loading revenue trend..."):
         yaxis_title="Revenue ($)",
         hovermode='x unified'
     )
-    st.plotly_chart(fig_trend, use_container_width=True)
+    st.plotly_chart(fig_trend, width='stretch')
 
 st.divider()
 
@@ -242,7 +242,7 @@ with st.spinner("Loading user activity..."):
         )
         fig_activity.update_traces(texttemplate='%{text:,}', textposition='outside')
         fig_activity.update_layout(showlegend=False, xaxis_title="", yaxis_title="Event Count")
-        st.plotly_chart(fig_activity, use_container_width=True)
+        st.plotly_chart(fig_activity, width='stretch')
     
     with col2:
         st.subheader("Unique Users by Event")
@@ -255,81 +255,11 @@ with st.spinner("Loading user activity..."):
         )
         fig_users.update_traces(texttemplate='%{text:,}', textposition='outside')
         fig_users.update_layout(showlegend=False, xaxis_title="", yaxis_title="Unique Users")
-        st.plotly_chart(fig_users, use_container_width=True)
+        st.plotly_chart(fig_users, width='stretch')
 
 st.divider()
 
-# ==================== SECTION 3: CONVERSION FUNNEL ====================
-st.header("Conversion Funnel")
-
-with st.spinner("Building conversion funnel..."):
-    funnel_query = f"""
-    SELECT 
-        SUM(CASE WHEN event_type = 'page_view' THEN 1 ELSE 0 END) as page_views,
-        COUNT(DISTINCT CASE WHEN event_type = 'add_to_cart' THEN user_id END) as added_to_cart,
-        COUNT(DISTINCT CASE WHEN event_type = 'add_to_cart' THEN user_id END) as cart_users
-    FROM delta.`/Volumes/project_2/datalake/gold/fact_user_activity/`
-    WHERE 1=1
-        {date_filter.replace('t.', '')}
-    """
-    
-    funnel_activity = run_query(funnel_query)
-    
-    purchases_query = f"""
-    SELECT 
-        COUNT(DISTINCT user_id) as purchase_users,
-        COUNT(DISTINCT CASE WHEN status = 'completed' THEN user_id END) as completed_users
-    FROM delta.`/Volumes/project_2/datalake/gold/fact_transactions/`
-    WHERE transaction_type = 'purchase'
-        {date_filter.replace('t.', '')}
-    """
-    
-    funnel_purchase = run_query(purchases_query)
-    
-    # Build funnel data
-    funnel_data = pd.DataFrame({
-        'Stage': ['Page Views', 'Add to Cart', 'Purchase', 'Completed'],
-        'Count': [
-            funnel_activity['page_views'][0],
-            funnel_activity['cart_users'][0],
-            funnel_purchase['purchase_users'][0],
-            funnel_purchase['completed_users'][0]
-        ]
-    })
-    
-    # Calculate conversion rates
-    funnel_data['Conversion Rate'] = (funnel_data['Count'] / funnel_data['Count'].iloc[0] * 100).round(2)
-    
-    col1, col2 = st.columns([2, 1])
-    
-    with col1:
-        # Funnel chart
-        fig_funnel = go.Figure(go.Funnel(
-            y=funnel_data['Stage'],
-            x=funnel_data['Count'],
-            textinfo="value+percent initial",
-            marker=dict(color=['#17a2b8', '#28a745', '#ffc107', '#007bff'])
-        ))
-        fig_funnel.update_layout(title="Conversion Funnel")
-        st.plotly_chart(fig_funnel, use_container_width=True)
-    
-    with col2:
-        st.subheader("Funnel Metrics")
-        for idx, row in funnel_data.iterrows():
-            st.metric(
-                row['Stage'],
-                f"{row['Count']:,}",
-                delta=f"{row['Conversion Rate']:.1f}%"
-            )
-        
-        # Overall conversion
-        overall_conv = (funnel_data['Count'].iloc[-1] / funnel_data['Count'].iloc[0] * 100)
-        st.metric("Overall Conversion", f"{overall_conv:.2f}%", 
-                  help="Page views to completed purchase")
-
-st.divider()
-
-# ==================== SECTION 4: CATEGORY MIX ====================
+# ==================== SECTION 3: CATEGORY MIX ====================
 st.header("Product & Category Performance")
 
 with st.spinner("Loading category data..."):
@@ -365,7 +295,7 @@ with st.spinner("Loading category data..."):
         )
         fig_cat_rev.update_traces(texttemplate='$%{text:,.0f}', textposition='outside')
         fig_cat_rev.update_layout(showlegend=False, xaxis_title="", yaxis_title="Revenue ($)")
-        st.plotly_chart(fig_cat_rev, use_container_width=True)
+        st.plotly_chart(fig_cat_rev, width='stretch')
     
     with col2:
         st.subheader("Category Mix (Units)")
@@ -375,7 +305,7 @@ with st.spinner("Loading category data..."):
             names='category',
             hole=0.4
         )
-        st.plotly_chart(fig_cat_units, use_container_width=True)
+        st.plotly_chart(fig_cat_units, width='stretch')
 
 # Top products
 with st.spinner("Loading top products..."):
@@ -409,7 +339,7 @@ with st.spinner("Loading top products..."):
     
     st.dataframe(
         display_df,
-        use_container_width=True,
+        width='stretch',
         hide_index=True
     )
 
