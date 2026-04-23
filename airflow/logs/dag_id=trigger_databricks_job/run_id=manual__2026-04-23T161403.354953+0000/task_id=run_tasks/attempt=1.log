@@ -1,0 +1,33 @@
+[2026-04-23T16:15:19.600+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-04-23T16:15:19.611+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: trigger_databricks_job.run_tasks manual__2026-04-23T16:14:03.354953+00:00 [queued]>
+[2026-04-23T16:15:19.617+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: trigger_databricks_job.run_tasks manual__2026-04-23T16:14:03.354953+00:00 [queued]>
+[2026-04-23T16:15:19.618+0000] {taskinstance.py:2856} INFO - Starting attempt 1 of 2
+[2026-04-23T16:15:19.626+0000] {taskinstance.py:2879} INFO - Executing <Task(DatabricksRunNowOperator): run_tasks> on 2026-04-23 16:14:03.354953+00:00
+[2026-04-23T16:15:19.632+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'trigger_databricks_job', 'run_tasks', 'manual__2026-04-23T16:14:03.354953+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/databricks_dag.py', '--cfg-path', '/tmp/tmputnz8rqo']
+[2026-04-23T16:15:19.633+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=201) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-04-23T16:15:19.634+0000] {standard_task_runner.py:105} INFO - Job 3: Subtask run_tasks
+[2026-04-23T16:15:19.634+0000] {standard_task_runner.py:72} INFO - Started process 202 to run task
+[2026-04-23T16:15:19.671+0000] {task_command.py:467} INFO - Running <TaskInstance: trigger_databricks_job.run_tasks manual__2026-04-23T16:14:03.354953+00:00 [running]> on host 2e907bf8fb05
+[2026-04-23T16:15:19.729+0000] {taskinstance.py:3122} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='trigger_databricks_job' AIRFLOW_CTX_TASK_ID='run_tasks' AIRFLOW_CTX_EXECUTION_DATE='2026-04-23T16:14:03.354953+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-04-23T16:14:03.354953+00:00'
+[2026-04-23T16:15:19.730+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-04-23T16:15:19.748+0000] {base.py:84} INFO - Retrieving connection 'databricks_default'
+[2026-04-23T16:15:19.750+0000] {databricks_base.py:687} INFO - Using basic auth.
+[2026-04-23T16:15:20.291+0000] {databricks.py:83} INFO - Run submitted with run_id: 673848392410176
+[2026-04-23T16:15:20.292+0000] {databricks_base.py:687} INFO - Using basic auth.
+[2026-04-23T16:15:20.633+0000] {databricks_base.py:687} INFO - Using basic auth.
+[2026-04-23T16:15:21.393+0000] {databricks.py:135} INFO - run_tasks in run state: {'life_cycle_state': 'QUEUED', 'result_state': '', 'state_message': ''}
+[2026-04-23T16:15:21.395+0000] {databricks.py:136} INFO - View run status, Spark UI, and logs at https://dbc-a744bafb-339b.cloud.databricks.com/?o=7474660085700623#job/755475453736163/run/673848392410176
+[2026-04-23T16:15:21.398+0000] {databricks.py:137} INFO - Sleeping for 30 seconds.
+[2026-04-23T16:15:51.402+0000] {databricks_base.py:687} INFO - Using basic auth.
+[2026-04-23T16:15:51.757+0000] {databricks.py:135} INFO - run_tasks in run state: {'life_cycle_state': 'RUNNING', 'result_state': '', 'state_message': ''}
+[2026-04-23T16:15:51.760+0000] {databricks.py:136} INFO - View run status, Spark UI, and logs at https://dbc-a744bafb-339b.cloud.databricks.com/?o=7474660085700623#job/755475453736163/run/673848392410176
+[2026-04-23T16:15:51.761+0000] {databricks.py:137} INFO - Sleeping for 30 seconds.
+[2026-04-23T16:16:10.110+0000] {local_task_job_runner.py:341} WARNING - State of this instance has been externally set to removed. Terminating instance.
+[2026-04-23T16:16:10.111+0000] {local_task_job_runner.py:240} INFO - ::endgroup::
+[2026-04-23T16:16:10.117+0000] {process_utils.py:132} INFO - Sending 15 to group 202. PIDs of all processes in the group: [202]
+[2026-04-23T16:16:10.119+0000] {process_utils.py:87} INFO - Sending the signal 15 to group 202
+[2026-04-23T16:16:10.120+0000] {taskinstance.py:3083} ERROR - Received SIGTERM. Terminating subprocesses.
+[2026-04-23T16:16:10.121+0000] {databricks_base.py:687} INFO - Using basic auth.
+[2026-04-23T16:16:10.860+0000] {databricks.py:960} INFO - Task: run_tasks with run_id: 673848392410176 was requested to be cancelled.
+[2026-04-23T16:16:10.873+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-04-23T16:16:10.899+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=202, status='terminated', exitcode=0, started='16:15:18') (202) terminated with exit code 0

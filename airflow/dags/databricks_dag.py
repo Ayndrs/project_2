@@ -19,12 +19,10 @@ with DAG(
     start_date=datetime(2026,4,20),
     catchup=False,
 ) as dag:
-
-    # Replace JOB_ID with your actual databricks job id
-    run_now = DatabricksRunNowOperator(
-        task_id='run_my_job',
+    run_tasks = DatabricksRunNowOperator(
+        task_id='tasks',
         databricks_conn_id='databricks_default',
         job_id=755475453736163,
     )
 
-    run_now
+    run_tasks
