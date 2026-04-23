@@ -1,2 +1,5 @@
-streamlit~=1.38.0
-pandas~=2.2.3
+streamlit
+pandas
+plotly
+python-dotenv
+databricks-sql-connector
