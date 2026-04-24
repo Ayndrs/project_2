@@ -1,14 +1,16 @@
+from dotenv import load_dotenv
+import os
+
+load_dotenv(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), '.env'))
+
 import streamlit as st
 from databricks import sql
 import pandas as pd
-from dotenv import load_dotenv
-import os
 import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime, timedelta
 
 # Load credentials
-load_dotenv()
 access_token = os.getenv("DATABRICKS_ACCESS_TOKEN")
 server_token = os.getenv("SERVER_HOSTNAME_TOKEN")
 http_path = os.getenv("HTTP_PATH_TOKEN")

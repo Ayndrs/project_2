@@ -1,6 +1,9 @@
+streamlit
 pandas
-boto3
+plotly
+python-dotenv
 databricks-sql-connector
+boto3
 langchain
 langchain-openai
 langchain-pinecone
@@ -8,5 +11,4 @@ langchain-community
 pinecone-client
 python-docx
 docx2txt
-streamlit
 openai
