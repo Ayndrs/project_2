@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 load_dotenv()
 
+import os
 from langchain.agents import AgentExecutor, create_react_agent
 from langchain.tools import Tool
 from langchain_openai import ChatOpenAI

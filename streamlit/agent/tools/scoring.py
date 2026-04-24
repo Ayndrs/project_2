@@ -98,15 +98,27 @@ def score_order(order_id: str) -> dict:
     # Step 4: build result
     tier = get_risk_tier(predicted_ltv)
     return {
-        "order_id": order_id,
-        "user_id": raw_row.get("user_id"),
-        "predicted_ltv": round(predicted_ltv, 2),
-        "risk_tier": tier,
-        "explanation": (
-            f"This customer is predicted to spend ${predicted_ltv:.2f} "
-            f"in the next 90 days, placing them in the {tier} value tier."
-        )
-    }
+    "order_id": order_id,
+    "user_id": raw_row.get("user_id"),
+    "predicted_ltv": round(predicted_ltv, 2),
+    "risk_tier": tier,
+    "explanation": (
+        f"This customer is predicted to spend ${predicted_ltv:.2f} "
+        f"in the next 90 days, placing them in the {tier} value tier."
+    ),
+    "top_factors": [
+        f"avg_days_between_purchases: {raw_row.get('avg_days_between_purchases')}",
+        f"previous_completed_purchases: {raw_row.get('previous_completed_purchases')}",
+        f"user_return_rate: {raw_row.get('user_return_rate')}",
+        f"user_cart_removals_7d: {raw_row.get('user_cart_removals_7d')}",
+        f"historical_avg_order_value: {raw_row.get('historical_avg_order_value')}"
+    ],
+    "suggested_next_step": (
+        "Priority follow-up recommended" if tier == "high"
+        else "Standard handling" if tier == "medium"
+        else "Monitor for churn risk"
+    )
+}
 
 
 # Test encoding only — no SageMaker needed yet

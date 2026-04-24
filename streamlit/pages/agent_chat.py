@@ -1,6 +1,11 @@
+from dotenv import load_dotenv
+load_dotenv()
+
 import streamlit as st
 import os
 import sys
+import json
+import re
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -22,6 +27,48 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.write(message["content"])
 
+def clean_output(text: str) -> str:
+    """Remove undefined and stray markdown artifacts from agent output."""
+    text = text.replace("undefined", "").strip()
+    text = re.sub(r'```+', '', text).strip()
+    return text
+
+def display_score_result(output: str):
+    """Check if output contains scoring data and display it cleanly."""
+    try:
+        # Try to find JSON in the output
+        json_match = re.search(r'\{.*?\}', output, re.DOTALL)
+        if json_match:
+            data = json.loads(json_match.group())
+            if "predicted_ltv" in data or "risk_tier" in data:
+                # Display structured score card
+                st.subheader("Customer Score")
+                col1, col2, col3 = st.columns(3)
+
+                with col1:
+                    st.metric("Predicted LTV", f"${data.get('predicted_ltv', 'N/A')}")
+                with col2:
+                    tier = data.get('risk_tier', 'unknown')
+                    st.metric("Risk Tier", tier.upper())
+                with col3:
+                    st.metric("Order ID", data.get('order_id', 'N/A'))
+
+                # Risk alert banner
+                if tier == "high":
+                    st.success("✅ High value customer — consider priority follow-up")
+                elif tier == "medium":
+                    st.info("ℹ️ Medium value customer — standard handling")
+                else:
+                    st.warning("⚠️ Low value customer — monitor for churn risk")
+
+                if data.get('explanation'):
+                    st.write(data['explanation'])
+
+                return True
+    except Exception:
+        pass
+    return False
+
 # Handle new input
 if prompt := st.chat_input("Ask about an order, policy, or product..."):
     st.session_state.messages.append({"role": "user", "content": prompt})
@@ -32,13 +79,15 @@ if prompt := st.chat_input("Ask about an order, policy, or product..."):
         with st.spinner("Thinking..."):
             try:
                 response = st.session_state.executor.invoke({"input": prompt})
-                output = response["output"]
+                output = clean_output(response["output"])
 
-                # Risk alert banner for high tier scores
-                if "high" in output.lower() and "tier" in output.lower():
-                    st.warning("⚠️ High value customer — consider priority follow-up")
+                # Try to display as structured score card first
+                displayed_as_card = display_score_result(output)
 
-                st.write(output)
+                # If not a score card just display as text
+                if not displayed_as_card:
+                    st.write(output)
+
                 st.session_state.messages.append({
                     "role": "assistant",
                     "content": output
