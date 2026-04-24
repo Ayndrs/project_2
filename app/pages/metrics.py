@@ -62,7 +62,7 @@ else:
 date_filter = f"AND t.event_date >= DATE_SUB(CURRENT_DATE(), {days_back})" if days_back else ""
 
 # Refresh button
-if st.sidebar.button("🔄 Refresh Data"):
+if st.sidebar.button("Refresh Data"):
     st.cache_resource.clear()
     st.rerun()
 
@@ -191,7 +191,8 @@ with st.spinner("Loading user data..."):
     SELECT 
         COUNT(DISTINCT t.user_id) as total_users,
         COUNT(DISTINCT CASE WHEN c.account_type = 'premium' THEN t.user_id END) as premium_users,
-        COUNT(DISTINCT CASE WHEN c.account_type = 'standard' THEN t.user_id END) as standard_users
+        COUNT(DISTINCT CASE WHEN c.account_type = 'standard' THEN t.user_id END) as standard_users,
+        COUNT(DISTINCT CASE WHEN c.account_type = 'enterprise' THEN t.user_id END) as enterprise_users
     FROM delta.`/Volumes/project_2/datalake/gold/fact_transactions/` t
     LEFT JOIN delta.`/Volumes/project_2/datalake/gold/dim_customer/` c ON t.user_id = c.user_id
     WHERE t.transaction_type = 'purchase'
@@ -205,11 +206,16 @@ with st.spinner("Loading user data..."):
     with col1:
         st.metric("Total Active Users", f"{users_df['total_users'][0]:,}")
     
+
     with col2:
+        st.metric("Enterprise Users", f"{users_df['enterprise_users'][0]:,}",
+                   delta=f"{users_df['enterprise_users'][0] / users_df['total_users'][0] * 100:.1f}%")
+
+    with col3:
         st.metric("Premium Users", f"{users_df['premium_users'][0]:,}",
                   delta=f"{users_df['premium_users'][0] / users_df['total_users'][0] * 100:.1f}%")
     
-    with col3:
+    with col4:
         st.metric("Standard Users", f"{users_df['standard_users'][0]:,}",
                   delta=f"{users_df['standard_users'][0] / users_df['total_users'][0] * 100:.1f}%")
 
