@@ -10,9 +10,11 @@ from datetime import datetime, timedelta
 # Load credentials
 load_dotenv()
 access_token = os.getenv("DATABRICKS_ACCESS_TOKEN")
+server_token = os.getenv("SERVER_HOSTNAME_TOKEN")
+http_path = os.getenv("HTTP_PATH_TOKEN")
 
-SERVER_HOSTNAME = "dbc-a744bafb-339b.cloud.databricks.com"
-HTTP_PATH = "/sql/1.0/warehouses/285585c567fa54f3"
+SERVER_HOSTNAME = server_token
+HTTP_PATH = http_path
 ACCESS_TOKEN = access_token
 
 
@@ -201,12 +203,11 @@ with st.spinner("Loading user data..."):
     
     users_df = run_query(users_query)
     
-    col1, col2, col3 = st.columns(3)
+    col1, col2, col3, col4 = st.columns(4)
     
     with col1:
         st.metric("Total Active Users", f"{users_df['total_users'][0]:,}")
     
-
     with col2:
         st.metric("Enterprise Users", f"{users_df['enterprise_users'][0]:,}",
                    delta=f"{users_df['enterprise_users'][0] / users_df['total_users'][0] * 100:.1f}%")
