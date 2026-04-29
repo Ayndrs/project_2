@@ -1,5 +1,7 @@
 from dotenv import load_dotenv
-load_dotenv()
+import os
+
+load_dotenv(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '..', '.env'), override=True)
 
 import os
 from langchain.agents import AgentExecutor, create_react_agent
@@ -31,7 +33,7 @@ def build_executor():
         Tool(
             name="ScoreOrder",
             func=score_order,
-            description="Score an order and predict customer LTV. Input is an order_id. Returns predicted 90-day spend, risk tier, and explanation. Never return a score without calling this tool."
+            description="Score an order and predict customer LTV. Input is an order_id. Returns a JSON object with predicted_ltv, risk_tier, order_id, top_factors, and suggested_next_step. Return the JSON exactly as received without paraphrasing."
         ),
         Tool(
             name="PolicyRAG",

@@ -134,7 +134,7 @@ with col1:
     )
     fig_status.update_traces(texttemplate='$%{text:,.0f}', textposition='outside')
     fig_status.update_layout(showlegend=False, xaxis_title="", yaxis_title="Revenue ($)")
-    st.plotly_chart(fig_status, width='stretch')
+    st.plotly_chart(fig_status, use_container_width=True)
 
 with col2:
     st.subheader("Transaction Mix")
@@ -150,7 +150,7 @@ with col2:
             'cancelled': '#6c757d'
         }
     )
-    st.plotly_chart(fig_pie, width='stretch')
+    st.plotly_chart(fig_pie, use_container_width=True)
 
 # Revenue trend over time
 with st.spinner("Loading revenue trend..."):
@@ -183,7 +183,7 @@ with st.spinner("Loading revenue trend..."):
         yaxis_title="Revenue ($)",
         hovermode='x unified'
     )
-    st.plotly_chart(fig_trend, width='stretch')
+    st.plotly_chart(fig_trend, use_container_width=True)
 
 st.divider()
 
@@ -251,7 +251,7 @@ with st.spinner("Loading user activity..."):
         )
         fig_activity.update_traces(texttemplate='%{text:,}', textposition='outside')
         fig_activity.update_layout(showlegend=False, xaxis_title="", yaxis_title="Event Count")
-        st.plotly_chart(fig_activity, width='stretch')
+        st.plotly_chart(fig_activity, use_container_width=True)
     
     with col2:
         st.subheader("Unique Users by Event")
@@ -264,7 +264,7 @@ with st.spinner("Loading user activity..."):
         )
         fig_users.update_traces(texttemplate='%{text:,}', textposition='outside')
         fig_users.update_layout(showlegend=False, xaxis_title="", yaxis_title="Unique Users")
-        st.plotly_chart(fig_users, width='stretch')
+        st.plotly_chart(fig_users, use_container_width=True)
 
 st.divider()
 
@@ -304,7 +304,7 @@ with st.spinner("Loading category data..."):
         )
         fig_cat_rev.update_traces(texttemplate='$%{text:,.0f}', textposition='outside')
         fig_cat_rev.update_layout(showlegend=False, xaxis_title="", yaxis_title="Revenue ($)")
-        st.plotly_chart(fig_cat_rev, width='stretch')
+        st.plotly_chart(fig_cat_rev, use_container_width=True)
     
     with col2:
         st.subheader("Category Mix (Units)")
@@ -314,7 +314,7 @@ with st.spinner("Loading category data..."):
             names='category',
             hole=0.4
         )
-        st.plotly_chart(fig_cat_units, width='stretch')
+        st.plotly_chart(fig_cat_units, use_container_width=True)
 
 # Top products
 with st.spinner("Loading top products..."):
@@ -348,7 +348,7 @@ with st.spinner("Loading top products..."):
     
     st.dataframe(
         display_df,
-        width='stretch',
+        use_container_width=True,
         hide_index=True
     )
 

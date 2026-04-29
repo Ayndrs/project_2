@@ -1,13 +1,14 @@
 from dotenv import load_dotenv
-load_dotenv()
-
-import streamlit as st
 import os
 import sys
+
+load_dotenv(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), '.env'))
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'streamlit'))
+
+import streamlit as st
 import json
 import re
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 st.set_page_config(page_title="Business Assistant", page_icon="💬")
 st.title("Internal Business Assistant")
@@ -36,37 +37,47 @@ def clean_output(text: str) -> str:
 def display_score_result(output: str):
     """Check if output contains scoring data and display it cleanly."""
     try:
-        # Try to find JSON in the output
-        json_match = re.search(r'\{.*?\}', output, re.DOTALL)
+        json_match = re.search(r'\{.*?"predicted_ltv".*?\}', output, re.DOTALL)
         if json_match:
             data = json.loads(json_match.group())
-            if "predicted_ltv" in data or "risk_tier" in data:
-                # Display structured score card
-                st.subheader("Customer Score")
-                col1, col2, col3 = st.columns(3)
 
-                with col1:
-                    st.metric("Predicted LTV", f"${data.get('predicted_ltv', 'N/A')}")
-                with col2:
-                    tier = data.get('risk_tier', 'unknown')
-                    st.metric("Risk Tier", tier.upper())
-                with col3:
-                    st.metric("Order ID", data.get('order_id', 'N/A'))
+            st.subheader("Customer Score")
+            col1, col2, col3 = st.columns(3)
 
-                # Risk alert banner
-                if tier == "high":
-                    st.success("✅ High value customer — consider priority follow-up")
-                elif tier == "medium":
-                    st.info("ℹ️ Medium value customer — standard handling")
-                else:
-                    st.warning("⚠️ Low value customer — monitor for churn risk")
+            with col1:
+                st.metric("Predicted LTV", f"${data.get('predicted_ltv', 'N/A')}")
+            with col2:
+                tier = data.get('risk_tier', 'unknown')
+                st.metric("Risk Tier", tier.upper())
+            with col3:
+                st.metric("Order ID", data.get('order_id', 'N/A'))
 
-                if data.get('explanation'):
-                    st.write(data['explanation'])
+            if tier == "high":
+                st.success("✅ High value customer — consider priority follow-up")
+            elif tier == "medium":
+                st.info("ℹ️ Medium value customer — standard handling")
+            else:
+                st.warning("⚠️ Low value customer — monitor for churn risk")
 
-                return True
+            if data.get('top_factors'):
+                st.write("**Top factors:**")
+                for factor in data.get('top_factors', []):
+                    st.write(f"- {factor}")
+
+            if data.get('suggested_next_step'):
+                st.write(f"**Suggested next step:** {data.get('suggested_next_step')}")
+
+            return True
     except Exception:
         pass
+
+    # If no JSON found, check if it looks like a scoring response and clean it up
+    if "predicted to spend" in output.lower() or "risk tier" in output.lower() or "ltv" in output.lower():
+        # Clean up the text and display it properly
+        clean = output.replace("$", "\\$")
+        st.markdown(clean)
+        return True
+
     return False
 
 # Handle new input
